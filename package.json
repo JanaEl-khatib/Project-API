@@ -1,0 +1,27 @@
+{
+  "name": "project-api",
+  "version": "0.1.0",
+  "description": "An API that has a single or two endpoint (a post and a get) a post for a new translator has been done (a counter), a get  for how many in total of the new translator has been used (the results). The mechanics of how to transfer the data from the information that was given. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanaEl-khatib/Project-API.git"
+  },
+  "author": "Jana El-Khatib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JanaEl-khatib/Project-API/issues"
+  },
+  "homepage": "https://github.com/JanaEl-khatib/Project-API#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}
