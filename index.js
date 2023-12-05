@@ -1,19 +1,19 @@
-const express = require('express')
-const helmet = require('helmet')
+const express = require('express');
+const helmet = require('helmet');
 const EventEmitter = require('events');
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
-app.use(helmet())
+app.use(helmet());
 
-let translate_count = 0
+let translate_count = 0;
 
 // Create an event emitter
 const eventEmitter = new EventEmitter();
 
 app.get('/', (req, res) => {
   res.json({ translate_count });
-})
+});
 
 app.post('/translation', (req, res) => {
   translate_count++;
@@ -21,17 +21,21 @@ app.post('/translation', (req, res) => {
   // Emit an event when the translation count is updated
   eventEmitter.emit('translationUpdated', translate_count);
 
-  res.status(201).send()
-})
+  res.status(201).send();
+});
+
+// Event listener to log the updated counter
+eventEmitter.on('translationUpdated', (count) => {
+  console.log(`Translation count updated: ${count}`);
+
+  // You can update the counter globally here if needed
+  // translate_count = count;
+  // And respond to requests with the updated count
+  // app.get('/', (req, res) => {
+  //   res.json({ translate_count: count });
+  // });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-
-// Event listener to update the counter on root
-eventEmitter.on('translationUpdated', (count) => {
-  // Update the counter on root
-  app.get('/', (req, res) => {
-    res.json({ translate_count: count });
-  })
-})
+  console.log(`Example app listening on port ${port}`);
+});
