@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const cors = require('cors');
 const EventEmitter = require('events');
 const app = express();
 const port = 3000;
@@ -11,6 +12,7 @@ let translate_count = 0;
 // Create an event emitter
 const eventEmitter = new EventEmitter();
 
+app.use(cors({origin: true}))
 app.get('/', (req, res) => {
   res.json({ translate_count });
 });
